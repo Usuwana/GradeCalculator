@@ -14,9 +14,9 @@ class _PercentState extends State<Percent> {
 
   double finalMark = 0;
 
-  dynamic calculatePercentage(double grade, double total) {
-    double percentage = (grade / total) * 100;
-    return percentage;
+  dynamic calculatePercentage(
+      TextEditingController grade, TextEditingController total) {
+    // return (double.parse(grade.text) / double.parse(total.text)) * 100;
   }
 
   @override
@@ -51,18 +51,15 @@ class _PercentState extends State<Percent> {
             ),
           ),
           ElevatedButton(
-              onPressed: finalMark = calculatePercentage(
-                  double.parse(gradeController.text),
-                  double.parse(totalController.text)),
+              onPressed: finalMark =
+                  calculatePercentage(gradeController, totalController),
               child: Text("Calculate percentage")),
-          TextField(
-            // ignore: unnecessary_const
-            onChanged: (text) {},
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: finalMark,
+          RichText(
+            text: TextSpan(
+              text: finalMark.toString(),
+              style: DefaultTextStyle.of(context).style,
             ),
-          ),
+          )
         ],
       )),
     );
