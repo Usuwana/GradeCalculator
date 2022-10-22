@@ -29,8 +29,12 @@ class _PercentState extends State<Percent> {
         ),
         body: SafeArea(
             child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
+                //mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+              SizedBox(
+                height: 200,
+              ),
               TextField(
                 // ignore: unnecessary_const
                 onChanged: (value) {
@@ -59,6 +63,7 @@ class _PercentState extends State<Percent> {
                   hintText: 'Enter maximum mark',
                 ),
               ),
+              SizedBox(height: 30),
               ElevatedButton(
                   onPressed: () {
                     setState(() {
@@ -70,7 +75,17 @@ class _PercentState extends State<Percent> {
                   },
                   child: Text("Calculate percentage")),
               shouldDisplay
-                  ? Text(calculatePercentage(grade, total).toStringAsFixed(2))
+                  ? Column(
+                      children: [
+                        SizedBox(height: 50),
+                        Text(
+                          calculatePercentage(grade, total).toStringAsFixed(2) +
+                              "%",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
+                        ),
+                      ],
+                    )
                   : Spacer()
             ])));
   }
