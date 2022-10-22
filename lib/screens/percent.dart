@@ -18,7 +18,7 @@ class _PercentState extends State<Percent> {
   double grade = 0;
 
   dynamic calculatePercentage(var grade, var total) {
-    return (double.parse(grade.text) / double.parse(total.text)) * 100;
+    return (grade / total) * 100;
   }
 
   @override
@@ -35,7 +35,7 @@ class _PercentState extends State<Percent> {
                 // ignore: unnecessary_const
                 onChanged: (value) {
                   setState(() {
-                    grade = value as double;
+                    grade = double.parse(value);
                   });
                 },
                 controller: gradeController,
@@ -50,7 +50,7 @@ class _PercentState extends State<Percent> {
                   //calculatePercentage(double.parse(gradeController.text),
                   //  int.parse(totalController.text));
                   setState(() {
-                    total = value as double;
+                    total = double.parse(value);
                   });
                 },
                 controller: totalController,
@@ -70,7 +70,7 @@ class _PercentState extends State<Percent> {
                   },
                   child: Text("Calculate percentage")),
               shouldDisplay
-                  ? Text(calculatePercentage(grade, total).toString())
+                  ? Text(calculatePercentage(grade, total).toStringAsFixed(2))
                   : Spacer()
             ])));
   }
