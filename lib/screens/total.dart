@@ -14,41 +14,55 @@ class _TotalState extends State<Total> {
     return Scaffold(
       appBar: AppBar(title: Text("Calculate total grade")),
       body: SafeArea(
-        child: Row(
+        child: Column(
           children: [
-            Expanded(
-              child: TextField(
-                // ignore: unnecessary_const
-                onChanged: (value) {
-                  //calculatePercentage(double.parse(gradeController.text),
-                  //  int.parse(totalController.text));
-                  setState(() {
-                    //total = double.parse(value);
-                  });
-                },
-                //controller: totalController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter maximum mark',
-                ),
-              ),
+            SizedBox(
+              height: 20,
             ),
-            Expanded(
-              child: TextField(
-                // ignore: unnecessary_const
-                onChanged: (value) {
-                  //calculatePercentage(double.parse(gradeController.text),
-                  //  int.parse(totalController.text));
-                  setState(() {
-                    // total = double.parse(value);
-                  });
-                },
-                //controller: totalController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter maximum mark',
-                ),
-              ),
+            new ListView.builder(
+              //scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: 3,
+              itemBuilder: (BuildContext ctxt, int index) {
+                return Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        // ignore: unnecessary_const
+                        onChanged: (value) {
+                          //calculatePercentage(double.parse(gradeController.text),
+                          //  int.parse(totalController.text));
+                          setState(() {
+                            //total = double.parse(value);
+                          });
+                        },
+                        //controller: totalController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter maximum mark',
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: TextField(
+                        // ignore: unnecessary_const
+                        onChanged: (value) {
+                          //calculatePercentage(double.parse(gradeController.text),
+                          //  int.parse(totalController.text));
+                          setState(() {
+                            // total = double.parse(value);
+                          });
+                        },
+                        //controller: totalController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Enter maximum mark',
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ],
         ),
