@@ -68,7 +68,6 @@ class _PercentState extends State<Percent> {
                     setState(() {
                       if (total != 0) {
                         shouldDisplay = !shouldDisplay;
-                        ;
                       }
                     });
                   },
