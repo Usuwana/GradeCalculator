@@ -18,6 +18,7 @@ class _TotalState extends State<Total> {
   List<double> totals = [];
 
   dynamic calculatePercentage(var grades, var weights) {
+    sum = 0;
     for (int i = 0; i < grades.length; i++) {
       double total = grades[i] * weights[i];
       totals.add(total);
@@ -25,6 +26,11 @@ class _TotalState extends State<Total> {
     for (var i = 0; i < totals.length; i++) {
       sum += totals[i];
     }
+    grades.clear();
+    weights.clear();
+    totals.clear();
+    displayPercent = false;
+    numberGrades = false;
     return sum;
   }
 
