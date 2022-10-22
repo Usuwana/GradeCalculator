@@ -19,7 +19,7 @@ class _TotalState extends State<Total> {
             SizedBox(
               height: 20,
             ),
-            new ListView.builder(
+            ListView.builder(
               //scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemCount: 3,
@@ -39,7 +39,7 @@ class _TotalState extends State<Total> {
                         //controller: totalController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'Enter maximum mark',
+                          hintText: 'Grade(%)',
                         ),
                       ),
                     ),
@@ -56,7 +56,7 @@ class _TotalState extends State<Total> {
                         //controller: totalController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: 'Enter maximum mark',
+                          hintText: 'Weight',
                         ),
                       ),
                     ),
