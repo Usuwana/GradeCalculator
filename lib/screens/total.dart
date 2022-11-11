@@ -13,6 +13,7 @@ class _TotalState extends State<Total> {
   bool displayPercent = false;
   int number = 0;
   double sum = 0;
+  List<TextEditingController> controllers = [];
   List<dynamic> grades = [];
   List<dynamic> weights = [];
   List<double> totals = [];
@@ -23,6 +24,7 @@ class _TotalState extends State<Total> {
       double total = grades[i] * weights[i];
       totals.add(total);
     }
+    print(totals.toString());
     for (var i = 0; i < totals.length; i++) {
       sum += totals[i];
     }
@@ -31,7 +33,8 @@ class _TotalState extends State<Total> {
     totals.clear();
     displayPercent = false;
     numberGrades = false;
-    return sum;
+
+    return sum * 100;
   }
 
   @override
@@ -44,9 +47,9 @@ class _TotalState extends State<Total> {
             Text("Please enter number of grades"),
             TextField(
               // ignore: unnecessary_const
-              onChanged: (value) {
+              onEditingComplete: () {
                 setState(() {
-                  number = int.parse(value);
+                  number = int.parse(inputController.text);
                   if (number > 0) {
                     numberGrades = true;
                   } else {
@@ -80,7 +83,7 @@ class _TotalState extends State<Total> {
                                       Expanded(
                                         child: TextField(
                                           // ignore: unnecessary_const
-                                          onChanged: (value) {
+                                          onSubmitted: (value) {
                                             //calculatePercentage(double.parse(gradeController.text),
                                             //  int.parse(totalController.text));
                                             setState(() {
@@ -100,7 +103,7 @@ class _TotalState extends State<Total> {
                                       Expanded(
                                         child: TextField(
                                           // ignore: unnecessary_const
-                                          onChanged: (value) {
+                                          onSubmitted: (value) {
                                             //calculatePercentage(double.parse(gradeController.text),
                                             //  int.parse(totalController.text));
                                             setState(() {
@@ -131,8 +134,13 @@ class _TotalState extends State<Total> {
                                   },
                                   child: Text("Calculate percentage")),
                               displayPercent
-                                  ? Text(calculatePercentage(grades, weights)
-                                      .toStringAsFixed(2))
+                                  ? Text(
+                                      calculatePercentage(grades, weights)
+                                              .toStringAsFixed(2) +
+                                          "%",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30))
                                   : Spacer()
                             ],
                           ),
