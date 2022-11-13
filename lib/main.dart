@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradecalculator/screens/home.dart';
 import 'package:gradecalculator/screens/percent.dart';
 import 'package:gradecalculator/screens/total.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Total(),
+      home: const Home(),
     );
   }
 }
